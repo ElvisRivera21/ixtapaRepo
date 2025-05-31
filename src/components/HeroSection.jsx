@@ -11,9 +11,9 @@ const HeroSection = () => {
             </video>
             <div className="hero-overlay"></div>
             <div className="hero-content">
-                <h1>Welcome to Ixtapa Paradise</h1>
-                <p>Relax. Recharge. Reconnect by the Pacific.</p>
-                <a href="#booking" className="hero-btn">Book Your Stay</a>
+                <h1>Meet Us In Mexico</h1>
+                <p>Justin Kendhammer & Kiara Rivera</p>
+                <a href="#booking" className="hero-btn">Let Us Know</a>
             </div>
         </section>
     );

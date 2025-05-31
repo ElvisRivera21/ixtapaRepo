@@ -5,15 +5,13 @@ import './Header.css'; // We'll style this next
 
 const Header = () => {
     return (
-        <header className="header">
-            <div className="logo">Ixtapa Rentals</div>
-            <nav className="nav">
-                <a href="#">Home</a>
-                <a href="#">Listings</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-            </nav>
-        </header>
+      
+      <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
     );
 };
 
