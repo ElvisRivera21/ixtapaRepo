@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import About from './components/About';
+
 import Services from './components/Services';
 
 import Contact from './components/Contact';
@@ -15,7 +15,7 @@ function App() {
         <HeroSection />
       </div>
       <div className="container">
-        <About />
+        
         <Services />
         
         <Contact />

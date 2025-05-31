@@ -16,6 +16,10 @@ const HeroSection = () => {
                 <p className="hero-names">Justin <span className="amp">&amp;</span> Kiara</p>
                 <p className="hero-date">AUGUST 18, 2026 • ZIHUATANEJO, MX</p>
                 <a href={mailtoLink} className="hero-btn">Let Us Know</a>
+                <h2 className="hero-subtitle">Save Our Date</h2>
+                <p className="hero-date">April 4th 2026</p>
+                <p className="hero-date">Zihuatanejo, Mexico</p>
+
             </div>
         </section>
     );
