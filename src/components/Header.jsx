@@ -1,18 +1,15 @@
-// src/components/Header.jsx
-
 import React from 'react';
-import './Header.css'; // We'll style this next
+import './Header.css';
 
 const Header = () => {
     return (
-      
-      <nav>
+        <nav className="wedding-header">
             <a href="#about">About</a>
-            <a href="#services">Services</a>
             <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact">RSVP</a>
         </nav>
     );
 };
 
 export default Header;
+

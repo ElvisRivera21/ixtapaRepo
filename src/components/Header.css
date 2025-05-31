@@ -22,3 +22,29 @@ nav a {
 nav a:hover {
     color: #ffeb9c;
 }
+
+.wedding-header {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.25rem;
+    background-color: white;
+    font-family: 'Georgia', serif;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.wedding-header a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    transition: color 0.3s ease;
+}
+
+.wedding-header a:hover {
+    color: #F6B817;
+}
