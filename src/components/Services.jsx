@@ -1,44 +1,77 @@
 import React from 'react';
 
-function Services() {
-    const services = [
+function Gallery() {
+    const galleryItems = [
         {
-            title: 'Oceanfront Villas',
-            description: 'Enjoy breathtaking ocean views from our luxury villas just steps from the beach.',
+            
+            image: 'src/assets/Photos/JK4.JPG',
         },
         {
-            title: 'Private Pools',
-            description: 'Relax in your own private pool, perfect for unwinding in paradise.',
+            
+            image: 'src/assets/Photos/JK3.JPG',
         },
         {
-            title: 'Airport Transfers',
-            description: 'We offer convenient airport pickup and drop-off for a stress-free experience.',
+            
+            image: 'src/assets/Photos/JK2.JPG',
         },
         {
-            title: 'Concierge Service',
-            description: 'From reservations to recommendations, our team is here to make your stay perfect.',
+            
+            image: 'src/assets/Photos/JK1.JPG',
         },
+        {
+            
+            image: 'src/assets/Photos/JK5.JPG',
+        },
+        {
+            
+            image: 'src/assets/Photos/JK6.JPG',
+        },
+        {
+           
+            image: 'src/assets/Photos/JK7.JPG',
+        },
+        {
+            
+            image: 'src/assets/Photos/JK8.JPG',
+        },
+        {
+            
+            image: 'src/assets/Photos/JK9.JPG',
+        },
+       
     ];
 
     return (
-        <section id="services" style={{ padding: '2rem' }}>
-            <h2 style={{ textAlign: 'center' }}>Our Story</h2>
+        <section id="gallery" style={{ padding: '2rem', backgroundColor: '#f9f9f9' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>Wedding Gallery</h2>
+            <p style={{ textAlign: 'center', marginBottom: '2rem', color: '#666' }}>
+                A glimpse into the unforgettable moments we’ve captured.
+            </p>
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                 gap: '1.5rem',
-                marginTop: '1.5rem'
             }}>
-                {services.map((service, index) => (
+                {galleryItems.map((item, index) => (
                     <div key={index} style={{
-                        padding: '1rem',
-                        border: '1px solid #ddd',
                         borderRadius: '8px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                         backgroundColor: '#fff',
-                        boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                        transition: 'transform 0.3s ease',
                     }}>
-                        <h3>{service.title}</h3>
-                        <p>{service.description}</p>
+                        <img
+                            src={item.image}
+                            alt={item.title}
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                display: 'block',
+                            }}
+                        />
+                        <div style={{ padding: '0.75rem', textAlign: 'center' }}>
+                            <h3 style={{ margin: 0, fontSize: '1rem', color: '#333' }}>{item.title}</h3>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -46,4 +79,4 @@ function Services() {
     );
 }
 
-export default Services;
+export default Gallery;
