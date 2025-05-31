@@ -63,3 +63,50 @@
 .hero-btn:hover {
     background-color: #ffeb9c;
 }
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    font-family: 'Georgia', serif;
+}
+
+.hero-names {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    color: #fefefe;
+}
+
+.hero-names .amp {
+    font-family: 'Georgia', serif;
+    font-weight: 300;
+    font-style: normal;
+    margin: 0 0.25rem;
+}
+
+.hero-date {
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: #fefefe;
+}
+
+.hero-btn {
+    background-color: #F6B817;
+    color: black;
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #ddb100;
+}
