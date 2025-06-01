@@ -1,0 +1,58 @@
+.things-section {
+    padding: 3rem 1rem;
+    background-color: #F1EEDC;
+    text-align: center;
+}
+
+.things-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.things-subtext {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.things-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.thing-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+.thing-card h3 {
+    font-size: 1.25rem;
+    color: #d4a373;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.thing-card p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.thing-card a {
+    text-decoration: none;
+    color: #d4a373;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.thing-card a:hover {
+    color: #b87741;
+}
