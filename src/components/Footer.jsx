@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Footer.css';
 function Footer() {
     return (
         <footer style={{ textAlign: 'center', padding: '1.5rem', backgroundColor: '#', marginTop: '2rem' }}>
