@@ -3,20 +3,27 @@ import './ThingsToDo.css';
 
 function ThingsToDo() {
     const recommendations = [
+    
+        {
+            name: 'Complete Guide',
+            description: 'A romantic fine dining experience on a cliffside terrace.',
+            link: 'https://www.ixtapa.net/',
+        },
+    
         {
             name: 'Playa La Ropa',
             description: 'A beautiful beach perfect for sunbathing, swimming, and water sports.',
-            link: 'https://goo.gl/maps/PLJ3ywY1yaP2',
+            link: 'https://www.google.com/search?q=about+playa+la+ropa&sca_esv=a4e73751e2307eeb&sxsrf=AE3TifNnD2rgEUKUsbQDPeCJycmWovhG_w%3A1757190255517&ei=b5i8aL6vH4S10PEP8PGlwA0&ved=0ahUKEwj-ou7n-8SPAxWEGjQIHfB4CdgQ4dUDCBE&uact=5&oq=about+playa+la+ropa&gs_lp=Egxnd3Mtd2l6LXNlcnAiE2Fib3V0IHBsYXlhIGxhIHJvcGEyBhAAGAgYHjILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCBAAGIAEGKIEMgUQABjvBTIIEAAYgAQYogQyCBAAGIAEGKIESIESUIEFWIkQcAB4ApABAJgBhwGgAZYFqgEDMi40uAEDyAEA-AEBmAIHoAK5BcICBBAAGEfCAgcQABiABBgNwgIGEAAYBxgewgIIEAAYBxgKGB7CAggQABgHGAgYHsICCBAAGKIEGIkFmAMA4gMFEgExIECIBgGQBgiSBwMyLjWgB_QssgcDMS41uAeyBcIHAzItN8gHHg&sclient=gws-wiz-serp#fpstate=ive&vld=cid:0a41f5ef,vid:nwQH-eQ5vPQ,st:0',
         },
         {
-            name: 'Raul’s Sunset Bar',
-            description: 'Beachside drinks and dinner with one of the best sunset views in town.',
-            link: 'https://goo.gl/maps/5Nj2FYvw2yvTCCoA8',
+            name: 'Fish Mercado',
+            description: 'Fresh fish market with the catch of the day.',
+            link: 'https://www.youtube.com/watch?v=ta9o1p8dfEw',
         },
         {
-            name: 'Mercado Municipal',
-            description: 'Local market full of handmade crafts, fresh produce, and authentic food.',
-            link: 'https://goo.gl/maps/mt9ZKxT3yFJGDF7G6',
+            name: 'Deep Sea Fishing',
+            description: 'Mention in RSVP if you are interested',
+            link: 'https://www.youtube.com/watch?v=XNzWsAIdmSY',
         },
         {
             name: 'Espuma Restaurant',
