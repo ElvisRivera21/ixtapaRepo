@@ -14,7 +14,7 @@ const HeroSection = () => {
             <div className="hero-content">
                 <h1 className="hero-title">Meet Us In Mexico</h1>
                 <p className="hero-names">Justin <span className="amp">&amp;</span> Kiara</p>
-                <p className="hero-date">AUGUST 18, 2026 • ZIHUATANEJO, MX</p>
+                <p className="hero-date">AUGUST 4, 2026 • ZIHUATANEJO, MX</p>
                 <a href={mailtoLink} className="hero-btn">Let Us Know</a>
                 <h2 className="hero-subtitle">Save Our Date</h2>
                 <p className="hero-date">April 4th 2026</p>
