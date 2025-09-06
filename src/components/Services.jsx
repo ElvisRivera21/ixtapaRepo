@@ -3,14 +3,14 @@ import './Services.css';
 
 function Services() {
     const galleryItems = [
-        { image: 'src/assets/Photos/JK4.JPG' },
-        { image: 'src/assets/Photos/JK3.JPG' },
-        { image: 'src/assets/Photos/JK2.JPG' },
-        { image: 'src/assets/Photos/JK1.JPG' },
-        { image: 'src/assets/Photos/JK5.JPG' },
-        { image: 'src/assets/Photos/JK6.JPG' },
-        { image: 'src/assets/Photos/JK7.JPG' },
-        { image: 'src/assets/Photos/JK8.JPG' },
+        { image: 'public/Photos/JK1.JPG' },
+        { image: 'public/Photos/JK2.JPG' },
+        { image: 'public/Photos/JK3.JPG' },
+        { image: 'public/Photos/JK4.JPG' },
+        { image: 'public/Photos/JK5.JPG' },
+        { image: 'public/Photos/JK6.JPG' },
+        { image: 'public/Photos/JK7.JPG' },
+        { image: 'public/Photos/JK8.JPG' },
     ];
 
     return (
