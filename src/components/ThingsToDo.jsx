@@ -6,7 +6,7 @@ function ThingsToDo() {
     
         {
             name: 'Complete Guide',
-            description: 'A romantic fine dining experience on a cliffside terrace.',
+            description: 'A complete guide to Ixtapa Zijuatanejo.',
             link: 'https://www.ixtapa.net/',
         },
     
