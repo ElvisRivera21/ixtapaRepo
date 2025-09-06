@@ -28,7 +28,7 @@ function ThingsToDo() {
         {
             name: 'Espuma Restaurant',
             description: 'A romantic fine dining experience on a cliffside terrace.',
-            link: 'https://espumarestaurant.com/',
+            link: 'https://www.hoteltentaciones.com/espuma-landing-english',
         }
     ];
 
