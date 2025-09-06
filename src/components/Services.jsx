@@ -4,14 +4,15 @@ import './Services.css';
 function Services() {
     const base = import.meta.env.BASE_URL; // '' locally, '/ixdtapRepo/' on GH Pages
     const galleryItems = [
-        { image: `${base}Photos/JK1.JPG` },
-        { image: `${base}Photos/JK2.JPG` },
-        { image: `${base}Photos/JK3.JPG` },
-        { image: `${base}Photos/JK4.JPG` },
-        { image: `${base}Photos/JK5.JPG` },
-        { image: `${base}Photos/JK6.JPG` },
-        { image: `${base}Photos/JK7.JPG` },
-        { image: `${base}Photos/JK8.JPG` },
+        { image: `${base}photos/photo1.JPG` },
+        { image: `${base}photos/photo2.JPG` },
+        { image: `${base}photos/photo3.JPG` },
+        { image: `${base}photos/photo4.JPG` },
+        { image: `${base}photos/photo5.JPG` },
+        { image: `${base}photos/photo6.JPG` },
+        { image: `${base}photos/photo7.JPG` },
+        { image: `${base}photos/photo8.JPG` },
+        { image: `${base}photos/photo9.JPG` },
     ];
 
     return (
