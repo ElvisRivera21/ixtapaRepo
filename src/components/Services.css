@@ -50,3 +50,10 @@
 .gallery-card:hover {
     transform: scale(1.02);
 }
+
+.monogram {
+    display: block;
+    margin: 20px auto;
+    max-width: 240px;
+    /* adjust size */
+    height: auto; }

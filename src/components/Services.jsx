@@ -18,7 +18,15 @@ function Services() {
     return (
         <section id="gallery" className="gallery-section">
             <div className="gallery-divider"></div>
-            <h2 className="gallery-title">Wedding Gallery</h2>
+            <h2 className="gallery-title">Wedding Gallery  </h2>
+           
+
+            <img
+        src={`${base}JK_monogram_wedding.svg`}
+        alt="J & K monogram"
+        className="monogram"
+      />
+
             <p className="gallery-subtext">
                 A glimpse into the unforgettable moments we’ve captured.
             </p>
