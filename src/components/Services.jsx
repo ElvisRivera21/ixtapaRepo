@@ -4,15 +4,27 @@ import './Services.css';
 export default function Services() {
   const base = import.meta.env.BASE_URL;
   const slides = [
-    { src: `${base}photos/photo1.JPG`, alt: 'JK 1' },
-    { src: `${base}photos/photo2.JPG`, alt: 'JK 2' },
-    { src: `${base}photos/photo3.JPG`, alt: 'JK 3' },
-    { src: `${base}photos/photo4.JPG`, alt: 'JK 4' },
-    { src: `${base}photos/photo5.JPG`, alt: 'JK 5' },
-    { src: `${base}photos/photo6.JPG`, alt: 'JK 6' },
-    { src: `${base}photos/photo7.JPG`, alt: 'JK 7' },
-    { src: `${base}photos/photo8.JPG`, alt: 'JK 8' },
-    { src: `${base}photos/photo9.JPG`, alt: 'JK 9' },
+    { src: `${base}photos/photo1.jpg`, alt: 'JK 1' },
+    { src: `${base}photos/photo2.jpg`, alt: 'JK 2' },
+    { src: `${base}photos/photo3.jpg`, alt: 'JK 3' },
+    { src: `${base}photos/photo4.jpg`, alt: 'JK 4' },
+    { src: `${base}photos/photo5.jpg`, alt: 'JK 5' },
+    { src: `${base}photos/photo6.jpg`, alt: 'JK 6' },
+    { src: `${base}photos/photo7.jpg`, alt: 'JK 7' },
+    { src: `${base}photos/photo8.jpg`, alt: 'JK 8' },
+    { src: `${base}photos/photo9.jpg`, alt: 'JK 9' },
+    { src: `${base}photos/photo10.jpg`, alt: 'JK 10' },
+    { src: `${base}photos/photo11.jpg`, alt: 'JK 11' },
+    { src: `${base}photos/photo12.jpg`, alt: 'JK 12' },
+    { src: `${base}photos/photo13.jpg`, alt: 'JK 13' },
+    { src: `${base}photos/photo14.jpg`, alt: 'JK 14' },
+    { src: `${base}photos/photo15.jpg`, alt: 'JK 15' },
+    { src: `${base}photos/photo16.jpg`, alt: 'JK 16' },
+    { src: `${base}photos/photo17.jpg`, alt: 'JK 17' },
+    { src: `${base}photos/photo18.jpg`, alt: 'JK 18' },
+    { src: `${base}photos/photo19.jpg`, alt: 'JK 19' },
+    { src: `${base}photos/photo20.jpg`, alt: 'JK 20' },// match whatever the actual case is on disk
+    // ...continue, matching each file’s exact name & extension case
   ];
 
   const [i, setI] = useState(0);
