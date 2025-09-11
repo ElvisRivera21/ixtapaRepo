@@ -12,8 +12,14 @@ export default function Contact() {
     e.preventDefault();
 
     const API_BASE = import.meta.env.PROD
-      ? 'https://YOUR-API-DOMAIN.com'  // later, when deployed
-      : 'http://localhost:3000';
+  ? 'https://ixtaparepo.onrender.com'   // ✅ your Render backend
+  : 'http://localhost:3000';
+
+await fetch(`${API_BASE}/rsvp`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name, attending, guests, message }),
+});
 
     const res = await fetch(`${API_BASE}/rsvp`, {
       method: 'POST',
