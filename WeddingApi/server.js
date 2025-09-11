@@ -1,4 +1,4 @@
-// server.js (ESM)
+// server.js
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -12,19 +12,13 @@ app.use(helmet());
 app.use(morgan('tiny'));
 app.use(express.json());
 
-// --- TEMP: allow every origin so preflight can't fail ---
-app.use(cors({
-  origin: true,                 // reflect the request Origin
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,            // ok even without cookies; browser will accept
-}));
+// TEMP: open CORS wide to confirm
+app.use(cors({ origin: true, credentials: true }));
 app.options('*', cors());
 
-// health
+// routes
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
-// rsvp
 app.post('/rsvp', (req, res) => {
   const { name, attending, guests, message } = req.body || {};
   if (!name || attending == null) {
@@ -34,9 +28,9 @@ app.post('/rsvp', (req, res) => {
   res.status(200).json({ message: 'RSVP received!' });
 });
 
-// 404
 app.use((req, res) => res.status(404).json({ error: 'Not found' }));
 
-app.listen(PORT, '0.0.0.0', () => {
+// IMPORTANT: listen on Render’s port
+app.listen(PORT, () => {
   console.log(`API running on port ${PORT}`);
 });
