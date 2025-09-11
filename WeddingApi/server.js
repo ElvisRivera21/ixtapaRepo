@@ -1,8 +1,8 @@
-// server.js
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
+// server.js (ESM)
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,59 +12,36 @@ app.use(helmet());
 app.use(morgan('tiny'));
 app.use(express.json());
 
-// Allow frontend domains (local + deployed)
+// CORS allow-list
 app.use(cors({
   origin: [
-    'http://localhost:5173',           // React dev
-    'https://ixtapa-repo.vercel.app',    // replace with your Vercel deploy
-    'https://justinandkiara.com',      // replace with your custom domain
+    'http://localhost:5173',
+    'https://ixtapa-repo.vercel.app',   // no trailing slash
+    'https://justinandkiara.com',
+    'https://www.justinandkiara.com'
   ],
   credentials: true,
 }));
 
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
+// Health
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
-// RSVP route
+// RSVP
 app.post('/rsvp', (req, res) => {
   const { name, attending, guests, message } = req.body;
+  if (!name || attending == null) return res.status(400).json({ error: 'Missing required fields' });
 
-  if (!name || !attending) {
-    return res.status(400).json({ error: 'Missing required fields' });
-  }
-
-  // You could save this to a DB, Google Sheet, or file
   console.log('--- New RSVP ---');
-  console.log(`Name: ${name}`);
-  console.log(`Attending: ${attending}`);
-  console.log(`Guests: ${guests}`);
-  console.log(`Message: ${message || 'None'}`);
+  console.log({ name, attending, guests, message: message || null });
   console.log('----------------');
 
-  return res.status(200).json({ message: 'RSVP received!' });
+  res.status(200).json({ message: 'RSVP received!' });
 });
 
-// Catch-all for unknown routes
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
+// 404
+app.use((req, res) => res.status(404).json({ error: 'Not found' }));
 
-// Start server
-app.listen(PORT, () => {
+// Listen on all interfaces (important for WSL)
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`API running on port ${PORT}`);
-});
-
-app.get('/rsvps', async (req, res) => {
-  try {
-    const rsvps = await prisma.rSVP.findMany({
-      orderBy: { createdAt: 'desc' },
-      take: 100, // limit to last 100
-    });
-    res.json(rsvps);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to fetch RSVPs' });
-  }
 });
