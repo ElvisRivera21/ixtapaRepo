@@ -42,6 +42,7 @@ app.post('/rsvp', (req, res) => {
 app.use((req, res) => res.status(404).json({ error: 'Not found' }));
 
 // Listen on all interfaces (important for WSL)
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`API running on port ${PORT}`);
+app.listen(process.env.PORT || 3000, '0.0.0.0', () => {
+  console.log(`API running on port ${process.env.PORT || 3000}`);
 });
+
