@@ -1,44 +1,57 @@
-import React from 'react';
-import './Contact.css';
+// server.js
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
 
-function Contact() {
-    const emailAddress = 'kiarariver11@yahoo.com';
-    const subject = encodeURIComponent('Wedding RSVP Confirmation');
-    const body = encodeURIComponent(
-        `Hello,\n\nI received the invitation and wanted to let you know:\n\n[ ] Yes, I will be attending.\n[ ] No, I won’t be able to attend.\n\nLooking forward to celebrating with you!\n\nBest,\n[Your Name]`
-    );
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-    const mailtoLink = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+// Middleware
+app.use(helmet());
+app.use(morgan('tiny'));
+app.use(express.json());
 
-    return (
-        <section id="contact" className="contact-section">
-            <h2 className="contact-title">Contact Us</h2>
-            <p className="contact-text">
-                We'd love to hear from you! You can email us directly or RSVP using the button below.
-            </p>
-            <a
-                href={mailtoLink}
-                className="contact-button"
-            >
-                RSVP via Email
-            </a>
+// Allow frontend domains (local + deployed)
+app.use(cors({
+  origin: [
+    'http://localhost:5173',           // React dev
+    'https://your-site.vercel.app',    // replace with your Vercel deploy
+    'https://justinandkiara.com',      // replace with your custom domain
+  ],
+  credentials: true,
+}));
 
-            <div>
-                <p className="honeymoon-message">
-                    Your presence is the greatest gift. <br />
-                    If you'd like to support our honeymoon adventure, you can visit our Venmo directly:
-                </p>
-                <a
-                    href="https://venmo.com/Kiaaararivera"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="venmo-link"
-                >
-                    @Kiaaararivera on Venmo
-                </a>
-            </div>
-        </section>
-    );
-}
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
-export default Contact;
+// RSVP route
+app.post('/rsvp', (req, res) => {
+  const { name, attending, guests, message } = req.body;
+
+  if (!name || !attending) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  // You could save this to a DB, Google Sheet, or file
+  console.log('--- New RSVP ---');
+  console.log(`Name: ${name}`);
+  console.log(`Attending: ${attending}`);
+  console.log(`Guests: ${guests}`);
+  console.log(`Message: ${message || 'None'}`);
+  console.log('----------------');
+
+  return res.status(200).json({ message: 'RSVP received!' });
+});
+
+// Catch-all for unknown routes
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`API running on port ${PORT}`);
+});
