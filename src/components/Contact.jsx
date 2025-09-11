@@ -1,57 +1,65 @@
-// server.js
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
+// src/components/Contact.jsx
+import React, { useState } from 'react';
+import './Contact.css';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+export default function Contact() {
+  const [name, setName] = useState('');
+  const [attending, setAttending] = useState('yes');
+  const [guests, setGuests] = useState(0);
+  const [message, setMessage] = useState('');
 
-// Middleware
-app.use(helmet());
-app.use(morgan('tiny'));
-app.use(express.json());
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-// Allow frontend domains (local + deployed)
-app.use(cors({
-  origin: [
-    'http://localhost:5173',           // React dev
-    'https://your-site.vercel.app',    // replace with your Vercel deploy
-    'https://justinandkiara.com',      // replace with your custom domain
-  ],
-  credentials: true,
-}));
+    const API_BASE = import.meta.env.PROD
+      ? 'https://YOUR-API-DOMAIN.com'  // later, when deployed
+      : 'http://localhost:3000';
 
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
+    const res = await fetch(`${API_BASE}/rsvp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, attending, guests, message }),
+    });
 
-// RSVP route
-app.post('/rsvp', (req, res) => {
-  const { name, attending, guests, message } = req.body;
+    if (res.ok) {
+      alert('RSVP submitted successfully!');
+      setName(''); setAttending('yes'); setGuests(0); setMessage('');
+    } else {
+      alert('Error submitting RSVP. Please try again.');
+    }
+  };
 
-  if (!name || !attending) {
-    return res.status(400).json({ error: 'Missing required fields' });
-  }
+  return (
+    <section id="contact" className="contact-section">
+      <h2 className="contact-title">RSVP & Wishes</h2>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <label>
+          Your Name:
+          <input type="text" value={name} onChange={(e)=>setName(e.target.value)} required />
+        </label>
 
-  // You could save this to a DB, Google Sheet, or file
-  console.log('--- New RSVP ---');
-  console.log(`Name: ${name}`);
-  console.log(`Attending: ${attending}`);
-  console.log(`Guests: ${guests}`);
-  console.log(`Message: ${message || 'None'}`);
-  console.log('----------------');
+        <label>
+          Will you attend?
+          <select value={attending} onChange={(e)=>setAttending(e.target.value)}>
+            <option value="yes">Yes, I will be attending</option>
+            <option value="no">No, I won’t be able to attend</option>
+          </select>
+        </label>
 
-  return res.status(200).json({ message: 'RSVP received!' });
-});
+        {attending === 'yes' && (
+          <label>
+            Number of Guests:
+            <input type="number" min="0" value={guests} onChange={(e)=>setGuests(e.target.value)} />
+          </label>
+        )}
 
-// Catch-all for unknown routes
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
+        <label>
+          Message (optional):
+          <textarea rows="4" value={message} onChange={(e)=>setMessage(e.target.value)} />
+        </label>
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`API running on port ${PORT}`);
-});
+        <button type="submit" className="contact-button">RSVP</button>
+      </form>
+    </section>
+  );
+}
