@@ -21,17 +21,7 @@ model Guest {
   rsvp      RSVP?
 }
 
-model RSVP {
-  id        Int      @id @default(autoincrement())
-  guestId   Int      @unique
-  attending Boolean
-  partySize Int      @default(1)
-  message   String   @default("")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
-  guest     Guest    @relation(fields: [guestId], references: [id])
-}
 
 
 datasource db {
