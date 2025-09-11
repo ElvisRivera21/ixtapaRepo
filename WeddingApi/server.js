@@ -55,3 +55,16 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`API running on port ${PORT}`);
 });
+
+app.get('/rsvps', async (req, res) => {
+  try {
+    const rsvps = await prisma.rSVP.findMany({
+      orderBy: { createdAt: 'desc' },
+      take: 100, // limit to last 100
+    });
+    res.json(rsvps);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch RSVPs' });
+  }
+});
