@@ -15,9 +15,8 @@ export default function Contact() {
 
     setBusy(true);
     try {
-      const API_BASE = import.meta.env.PROD
-        ? 'https://ixtaparepo.onrender.com' // Render backend
-        : 'http://localhost:3000';
+      // Always use your Render backend
+      const API_BASE = 'https://ixtaparepo.onrender.com';
 
       const res = await fetch(`${API_BASE}/rsvp`, {
         method: 'POST',
