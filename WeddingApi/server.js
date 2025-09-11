@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:5173',           // React dev
-    'https://ixtapa-repo.vercel.app/',    // replace with your Vercel deploy
+    'https://ixtapa-repo.vercel.app',    // replace with your Vercel deploy
     'https://justinandkiara.com',      // replace with your custom domain
   ],
   credentials: true,
