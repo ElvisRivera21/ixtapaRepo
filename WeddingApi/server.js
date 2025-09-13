@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 /**
  * Allow multiple origins.
- * You can set ALLOWED_ORIGINS in Render like:
+ * Set ALLOWED_ORIGINS in Render like:
  *   https://justinandkiara.com,https://www.justinandkiara.com,http://localhost:5173
  */
 const RAW_ORIGINS =
@@ -30,28 +30,34 @@ try {
 // --- MIDDLEWARE ---
 app.use(express.json());
 
-// CORS (allow-list + proper preflight)
+// Debug log to confirm Origin in Render logs
+app.use((req, _res, next) => {
+  if (req.headers.origin) {
+    console.log("Incoming Origin:", req.headers.origin);
+  }
+  next();
+});
+
+// CORS setup with allowlist + preflight
 app.use(
   cors({
     origin: (origin, cb) => {
-      // allow non-browser tools (curl/Postman) with no Origin header
-      if (!origin) return cb(null, true);
-      if (ALLOWLIST.includes(origin)) return cb(null, true);
-      return cb(new Error(`Not allowed by CORS: ${origin}`));
+      if (!origin) return cb(null, true); // curl/Postman/no origin
+      return ALLOWLIST.includes(origin)
+        ? cb(null, true)
+        : cb(new Error(`Not allowed by CORS: ${origin}`));
     },
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: false,
   })
 );
-// Respond to all OPTIONS preflights
 app.options("*", cors());
 
 // --- HEALTH ---
 app.get("/", (_req, res) => res.send("API OK"));
 
-// --- CREATE RSVP (from your form) ---
-// Accepts: { name, attending, guests, message, email?, firstName?, lastName?, guestId? }
+// --- CREATE RSVP ---
 app.post("/rsvp", async (req, res) => {
   try {
     const {
@@ -67,7 +73,6 @@ app.post("/rsvp", async (req, res) => {
 
     if (!name) return res.status(400).json({ error: "Missing 'name'." });
 
-    // normalize types from the form
     const attendingBool =
       typeof attending === "boolean"
         ? attending
@@ -76,7 +81,6 @@ app.post("/rsvp", async (req, res) => {
 
     const guestsInt = Number.isFinite(Number(guests)) ? Number(guests) : 0;
 
-    // If you collect email, upsert a Guest; or connect by guestId if provided
     let guestConnect = undefined;
     if (email) {
       const guest = await prisma.guest.upsert({
@@ -107,13 +111,13 @@ app.post("/rsvp", async (req, res) => {
   }
 });
 
-// --- LIST RSVPs (with Guest info) ---
+// --- LIST RSVPs ---
 app.get("/rsvps", async (req, res) => {
   try {
     const {
       q = "",
-      attending = "all", // all | yes | no
-      sort = "desc",     // asc | desc
+      attending = "all",
+      sort = "desc",
       limit = "100",
       offset = "0",
     } = req.query;
