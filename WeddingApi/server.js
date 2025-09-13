@@ -8,8 +8,16 @@ const prisma = new PrismaClient();
 
 // --- ENV ---
 const PORT = process.env.PORT || 3000;
-// e.g. http://localhost:5173 (dev) or https://justinandkiara.com (prod)
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "http://localhost:5173";
+
+/**
+ * Allow multiple origins.
+ * You can set ALLOWED_ORIGINS in Render like:
+ *   https://justinandkiara.com,https://www.justinandkiara.com,http://localhost:5173
+ */
+const RAW_ORIGINS =
+  process.env.ALLOWED_ORIGINS ||
+  "http://localhost:5173,https://justinandkiara.com,https://www.justinandkiara.com";
+const ALLOWLIST = RAW_ORIGINS.split(",").map((s) => s.trim());
 
 // Helpful: confirm which DB this process is using
 try {
@@ -21,12 +29,23 @@ try {
 
 // --- MIDDLEWARE ---
 app.use(express.json());
+
+// CORS (allow-list + proper preflight)
 app.use(
   cors({
-    origin: ALLOWED_ORIGIN,
+    origin: (origin, cb) => {
+      // allow non-browser tools (curl/Postman) with no Origin header
+      if (!origin) return cb(null, true);
+      if (ALLOWLIST.includes(origin)) return cb(null, true);
+      return cb(new Error(`Not allowed by CORS: ${origin}`));
+    },
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: false,
   })
 );
+// Respond to all OPTIONS preflights
+app.options("*", cors());
 
 // --- HEALTH ---
 app.get("/", (_req, res) => res.send("API OK"));
@@ -145,17 +164,18 @@ app.get("/rsvps.csv", async (_req, res) => {
     });
 
     const esc = (s = "") => `"${String(s).replaceAll(`"`, `""`)}"`;
-    const header = [
-      "Name",
-      "Attending",
-      "Guests",
-      "Message",
-      "CreatedAt",
-      "GuestEmail",
-      "GuestFirst",
-      "GuestLast",
-      "GuestId",
-    ].join(",") + "\n";
+    const header =
+      [
+        "Name",
+        "Attending",
+        "Guests",
+        "Message",
+        "CreatedAt",
+        "GuestEmail",
+        "GuestFirst",
+        "GuestLast",
+        "GuestId",
+      ].join(",") + "\n";
 
     const body = rows
       .map((r) =>
