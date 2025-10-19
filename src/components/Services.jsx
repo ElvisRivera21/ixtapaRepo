@@ -76,7 +76,12 @@ export default function Services() {
       </div>
 
       <p className="gallery-subtext">
-        A glimpse into the unforgettable moments we’ve captured.
+        Hola! amigos! Welcome to our wedding website! We're so excited to celebrate our love in beautiful Zihuatanejo, Mexico. Here you'll find all the details you need to plan your trip and join us for a weekend full of sunshine, laughter and unforgettable memories.<br />
+        Travel into airport!<br />
+        Fly into Ixtapa - Zihuatanejo International airport (ZIH)<br />
+        Transportation Available: Taxis and Shuttles are availble.<br />
+        Uber is limited<br />
+        Travel Tip: Bring pesos from local vendors, pack light breathable light breathable clothes and don't forget the sun scren!
       </p>
 
       {/* SLIDESHOW */}
