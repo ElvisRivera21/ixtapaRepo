@@ -1,3 +1,4 @@
+// src/components/Contact.jsx
 import React from 'react';
 import './Contact.css';
 
@@ -16,10 +17,8 @@ function Contact() {
             <p className="contact-text">
                 We'd love to hear from you! You can email us directly or RSVP using the button below.
             </p>
-            <a
-                href={mailtoLink}
-                className="contact-button"
-            >
+
+            <a href={mailtoLink} className="contact-button">
                 RSVP via Email
             </a>
 

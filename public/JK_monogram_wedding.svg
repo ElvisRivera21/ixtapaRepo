@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .gold { fill: #C8A96A; }
+      .gold-stroke { stroke: #C8A96A; fill: none; }
+      .ring { stroke-width: 6; }
+      .dots { stroke-width: 2; stroke-dasharray: 1,18; stroke-linecap: round; }
+      .initials { fill: #1a1a1a; font-family: "Georgia", "Times New Roman", serif; font-weight: 700; }
+      .ampersand { fill: #1a1a1a; font-family: "Georgia", "Times New Roman", serif; font-weight: 400; }
+      .thin { stroke-width: 2; }
+      .thick { stroke-width: 4; }
+    </style>
+  </defs>
+
+  <!-- Outer elegant ring -->
+  <circle cx="500" cy="500" r="420" class="gold-stroke ring"/>
+  <!-- Dotted inner ring -->
+  <circle cx="500" cy="500" r="360" class="gold-stroke dots"/>
+
+  <!-- Subtle laurels (left and right) -->
+  <g transform="translate(500,500)">
+    <g transform="rotate(-25) translate(-370, 0) scale(1.1)">
+      <path d="M0,0 C60,-80 140,-120 220,-120" class="gold-stroke thick" stroke-linecap="round"/>
+      <!-- leaves -->
+      <ellipse cx="40" cy="-30" rx="10" ry="22" class="gold" transform="rotate(-20,40,-30)"/>
+      <ellipse cx="85" cy="-55" rx="10" ry="22" class="gold" transform="rotate(-10,85,-55)"/>
+      <ellipse cx="130" cy="-75" rx="10" ry="22" class="gold"/>
+      <ellipse cx="175" cy="-92" rx="10" ry="22" class="gold" transform="rotate(10,175,-92)"/>
+    </g>
+    <g transform="scale(-1,1) rotate(-25) translate(-370, 0) scale(1.1)">
+      <path d="M0,0 C60,-80 140,-120 220,-120" class="gold-stroke thick" stroke-linecap="round"/>
+      <ellipse cx="40" cy="-30" rx="10" ry="22" class="gold" transform="rotate(-20,40,-30)"/>
+      <ellipse cx="85" cy="-55" rx="10" ry="22" class="gold" transform="rotate(-10,85,-55)"/>
+      <ellipse cx="130" cy="-75" rx="10" ry="22" class="gold"/>
+      <ellipse cx="175" cy="-92" rx="10" ry="22" class="gold" transform="rotate(10,175,-92)"/>
+    </g>
+  </g>
+
+  <!-- Initials -->
+  <text x="370" y="545" font-size="280" text-anchor="middle" class="initials">J</text>
+  <text x="630" y="545" font-size="280" text-anchor="middle" class="initials">K</text>
+
+  <!-- Small heart between initials -->
+  <path class="gold" d="M500 520
+           c -30 -35 -90 -15 -90 25
+           c 0 40 45 60 90 100
+           c 45 -40 90 -60 90 -100
+           c 0 -40 -60 -60 -90 -25 z"/>
+
+  <!-- Underline flourish -->
+  <path d="M220,680 C340,720 660,720 780,650
+           C720,680 640,700 520,690
+           C430,685 350,670 250,640" class="gold-stroke thin" stroke-linecap="round"/>
+
+</svg>
