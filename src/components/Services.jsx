@@ -3,6 +3,7 @@ import './Services.css';
 
 export default function Services() {
   const base = import.meta.env.BASE_URL;
+
   const slides = [
     { src: `${base}photos/photo1.jpg`, alt: 'JK 1' },
     { src: `${base}photos/photo2.jpg`, alt: 'JK 2' },
@@ -48,6 +49,30 @@ export default function Services() {
     if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
   };
 
+  /* 🕒 COUNTDOWN TIMER LOGIC */
+  const targetDate = new Date('2026-02-14T00:00:00'); // <-- set your date here
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, mins: 0, secs: 0 });
+      } else {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+          mins: Math.floor((diff / (1000 * 60)) % 60),
+          secs: Math.floor((diff / 1000) % 60),
+        });
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="gallery" className="gallery-section">
       <h2 className="gallery-title">Wedding Gallery</h2>
@@ -58,6 +83,29 @@ export default function Services() {
           alt="J & K monogram"
           className="monogram-under"
         />
+      </div>
+
+      {/* 💍 Countdown Timer */}
+      <div className="countdown-container">
+        <p className="countdown-title">Countdown to the Big Day</p>
+        <div className="countdown">
+          <div>
+            <span>{timeLeft.days}</span>
+            <p>Days</p>
+          </div>
+          <div>
+            <span>{timeLeft.hours}</span>
+            <p>Hours</p>
+          </div>
+          <div>
+            <span>{timeLeft.mins}</span>
+            <p>Minutes</p>
+          </div>
+          <div>
+            <span>{timeLeft.secs}</span>
+            <p>Seconds</p>
+          </div>
+        </div>
       </div>
 
       <div className="gallery-subtext">
@@ -75,6 +123,7 @@ export default function Services() {
         </ul>
       </div>
 
+      {/* Slideshow */}
       <div
         className="slideshow"
         onMouseEnter={() => setPlaying(false)}
