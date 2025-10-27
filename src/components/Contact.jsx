@@ -3,7 +3,7 @@ import React from 'react';
 import './Contact.css';
 
 function Contact() {
-    const emailAddress = 'therealelvisrivera@gmail.com';
+    const emailAddress = 'justin.kiara2026@gmail.com';
     const subject = encodeURIComponent('Wedding RSVP Confirmation');
     const body = encodeURIComponent(
         `Hello,\n\nI received the invitation and wanted to let you know:\n\n[ ] Yes, I will be attending.\n[ ] No, I won’t be able to attend.\n\nLooking forward to celebrating with you!\n\nBest,\n[Your Name]`
