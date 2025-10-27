@@ -1,248 +1,159 @@
-import React,
-{
-useEffect,
-useRef,
-useState
+/* Section layout */
+.gallery-section {
+    background: linear-gradient(to bottom, #ffb84d 0%, #ffcc73 100%);
+    padding: 4rem 1rem;
+    text-align: center;
+    color: #2e2e2e;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
 }
 
-from 'react';
-import './Services.css';
-
-export default function Services() {
-    const base=import.meta.env.BASE_URL;
-
-    const slides=[ {
-        src: `$ {
-            base
-        }
-
-        photos/photo1.jpg`,
-        alt: 'JK 1'
-    }
-
-    ,
-    {
-    src: `$ {
-        base
-    }
-
-    photos/photo2.jpg`,
-    alt: 'JK 2'
+/* Header */
+.gallery-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 }
 
-,
-{
-src: `$ {
-    base
+/* Monogram */
+.monogram-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.2rem;
 }
 
-photos/photo3.jpg`,
-alt: 'JK 3'
+.monogram-under {
+    width: 230px;
+    height: auto;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease;
 }
 
-,
-{
-src: `$ {
-    base
+.monogram-under:hover {
+    transform: scale(1.06);
 }
 
-photos/photo4.jpg`,
-alt: 'JK 4'
+/* Intro paragraph */
+.gallery-subtext {
+    max-width: 750px;
+    margin: 0 auto 3rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-,
-{
-src: `$ {
-    base
+.gallery-subtext ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.2rem;
 }
 
-photos/photo5.jpg`,
-alt: 'JK 5'
+.gallery-subtext li {
+    margin: 0.5rem 0;
 }
 
-,
-{
-src: `$ {
-    base
+/* Slideshow container */
+.slideshow {
+    position: relative;
+    overflow: hidden;
+    max-width: 950px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    background: #000;
 }
 
-photos/photo6.jpg`,
-alt: 'JK 6'
+/* Slide track */
+.track {
+    display: flex;
+    transition: transform 0.7s ease-in-out;
 }
 
-,
-{
-src: `$ {
-    base
+/* Individual slides */
+.slide {
+    min-width: 100%;
+    position: relative;
 }
 
-photos/photo7.jpg`,
-alt: 'JK 7'
+.slide-img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    display: block;
+    user-select: none;
 }
 
-,
-{
-src: `$ {
-    base
+/* Vignette for subtle depth */
+.vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.5));
+    pointer-events: none;
 }
 
-photos/photo8.jpg`,
-alt: 'JK 8'
+/* Navigation arrows */
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.4);
+    color: #1a1a1a;
+    border: none;
+    font-size: 2.6rem;
+    cursor: pointer;
+    padding: 0 0.7rem;
+    border-radius: 12px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 10;
 }
 
-,
-{
-src: `$ {
-    base
+.nav:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateY(-50%) scale(1.1);
 }
 
-photos/photo9.jpg`,
-alt: 'JK 9'
+.prev {
+    left: 10px;
 }
 
-,
-{
-src: `$ {
-    base
+.next {
+    right: 10px;
 }
 
-photos/photo10.jpg`,
-alt: 'JK 10'
+/* Dots navigation */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 18px 0;
 }
 
-,
-];
-
-const [i,
-setI]=useState(0);
-const [playing,
-setPlaying]=useState(true);
-const timer=useRef(null);
-
-const go=(n)=>setI((p)=> (p + n + slides.length) % slides.length);
-const goTo=(n)=>setI(n);
-
-// autoplay
-useEffect(()=> {
-        if ( !playing) return;
-        timer.current=setInterval(()=> go(1), 4000);
-        return ()=> clearInterval(timer.current);
-    }
-
-    , [playing]);
-
-// keyboard navigation
-useEffect(()=> {
-        const onKey=(e)=> {
-            if (e.key==='ArrowRight') go(1);
-            if (e.key==='ArrowLeft') go(-1);
-        }
-
-        ;
-        window.addEventListener('keydown', onKey);
-        return ()=> window.removeEventListener('keydown', onKey);
-    }
-
-    , []);
-
-// touch swipe
-const touch=useRef({
-    x: 0
-});
-
-const onTouchStart=(e)=>(touch.current= {
-        x: e.touches[0].clientX
-    });
-
-const onTouchEnd=(e)=> {
-    const dx=e.changedTouches[0].clientX - touch.current.x;
-    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.45);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
 }
 
-;
+.dot:hover {
+    transform: scale(1.2);
+    background: #f6b817;
+}
 
-return (<section id="gallery" className="gallery-section" > <h2 className="gallery-title" >Wedding Gallery</h2> <div className="monogram-wrap" > <img src= {
-        `$ {
-            base
-        }
-
-        JK_monogram_wedding.svg`
-    }
-
-    alt="J & K monogram"
-    className="monogram-under"
-
-    /> </div> <div className="gallery-subtext" > <p> Hola amigos ! Welcome to our wedding website ! We’re so excited to celebrate our love in beautiful <strong>Zihuatanejo, Mexico</strong>. Here you'll find all the details you need
- to plan your trip and join us for a weekend full of sunshine, laughter, and unforgettable memories. </p> <ul> <li>✈️ Fly into Ixtapa – Zihuatanejo International Airport (ZIH)</li> <li>🚕 Taxis and shuttles are available</li> <li>🚫 Uber is limited</li> <li>☀️ Travel Tip: Bring pesos, pack light breathable clothes, and don’t forget sunscreen !</li> </ul> </div> <div className="slideshow"
-    onMouseEnter= {
-        ()=> setPlaying(false)
-    }
-
-    onMouseLeave= {
-        ()=> setPlaying(true)
-    }
-
-    onTouchStart= {
-        onTouchStart
-    }
-
-    onTouchEnd= {
-        onTouchEnd
-    }
-
-    > <button className="nav prev" onClick= {
-        ()=> go(-1)
-    }
-
-    aria-label="Previous slide" > ‹ </button> <div className="track" style= {
-            {
-            transform: `translateX(-$ {
-                    i * 100
-                }
-
-                %)`
-        }
-    }
-
-    > {
-        slides.map((s, idx)=> (<div className="slide" key= {
-                    idx
-                }
-
-                > <img src= {
-                    s.src
-                }
-
-                alt= {
-                    s.alt
-                }
-
-                className="slide-img" loading="lazy" /> <div className="vignette" /> </div>))
-    }
-
-    </div> <button className="nav next" onClick= {
-        ()=> go(1)
-    }
-
-    aria-label="Next slide" > › </button> <div className="dots" > {
-        slides.map((_, idx)=> (<button key= {
-                    idx
-                }
-
-                className= {
-                    `dot $ {
-                        i===idx ? 'active' : ''
-                    }
-
-                    `
-                }
-
-                onClick= {
-                    ()=> goTo(idx)
-                }
-
-                />))
-    }
-
-    </div> </div> </section>);
+.dot.active {
+    background: #1a1a1a;
+    transform: scale(1.3);
 }
