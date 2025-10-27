@@ -14,17 +14,6 @@ export default function Services() {
     { src: `${base}photos/photo8.jpg`, alt: 'JK 8' },
     { src: `${base}photos/photo9.jpg`, alt: 'JK 9' },
     { src: `${base}photos/photo10.jpg`, alt: 'JK 10' },
-    { src: `${base}photos/photo11.jpg`, alt: 'JK 11' },
-    { src: `${base}photos/photo12.jpg`, alt: 'JK 12' },
-    { src: `${base}photos/photo13.jpg`, alt: 'JK 13' },
-    { src: `${base}photos/photo14.jpg`, alt: 'JK 14' },
-    { src: `${base}photos/photo15.jpg`, alt: 'JK 15' },
-    { src: `${base}photos/photo16.jpg`, alt: 'JK 16' },
-    { src: `${base}photos/photo17.jpg`, alt: 'JK 17' },
-    { src: `${base}photos/photo18.jpg`, alt: 'JK 18' },
-    { src: `${base}photos/photo19.jpg`, alt: 'JK 19' },
-    { src: `${base}photos/photo20.jpg`, alt: 'JK 20' },// match whatever the actual case is on disk
-    // ...continue, matching each file’s exact name & extension case
   ];
 
   const [i, setI] = useState(0);
@@ -37,11 +26,11 @@ export default function Services() {
   // autoplay
   useEffect(() => {
     if (!playing) return;
-    timer.current = setInterval(() => go(1), 3500);
+    timer.current = setInterval(() => go(1), 4000);
     return () => clearInterval(timer.current);
   }, [playing]);
 
-  // keyboard nav
+  // keyboard navigation
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'ArrowRight') go(1);
@@ -52,8 +41,8 @@ export default function Services() {
   }, []);
 
   // touch swipe
-  const touch = useRef({ x: 0, y: 0 });
-  const onTouchStart = (e) => (touch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY });
+  const touch = useRef({ x: 0 });
+  const onTouchStart = (e) => (touch.current = { x: e.touches[0].clientX });
   const onTouchEnd = (e) => {
     const dx = e.changedTouches[0].clientX - touch.current.x;
     if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
@@ -61,12 +50,8 @@ export default function Services() {
 
   return (
     <section id="gallery" className="gallery-section">
-     
-
-      <div className="gallery-divider"></div>
       <h2 className="gallery-title">Wedding Gallery</h2>
 
-      {/* centered monogram directly under header */}
       <div className="monogram-wrap">
         <img
           src={`${base}JK_monogram_wedding.svg`}
@@ -75,16 +60,21 @@ export default function Services() {
         />
       </div>
 
-      <p className="gallery-subtext">
-        Hola! amigos! Welcome to our wedding website! We're so excited to celebrate our love in beautiful Zihuatanejo, Mexico. Here you'll find all the details you need to plan your trip and join us for a weekend full of sunshine, laughter and unforgettable memories.<br />
-        Travel into airport!<br />
-        Fly into Ixtapa - Zihuatanejo International airport (ZIH)<br />
-        Transportation Available: Taxis and Shuttles are availble.<br />
-        Uber is limited<br />
-        Travel Tip: Bring pesos from local vendors, pack light breathable light breathable clothes and don't forget the sun scren!
-      </p>
+      <div className="gallery-subtext">
+        <p>
+          Hola amigos! Welcome to our wedding website! We’re so excited to celebrate our love in
+          beautiful <strong>Zihuatanejo, Mexico</strong>. Here you'll find all the details you need
+          to plan your trip and join us for a weekend full of sunshine, laughter, and unforgettable
+          memories.
+        </p>
+        <ul>
+          <li>✈️ Fly into Ixtapa – Zihuatanejo International Airport (ZIH)</li>
+          <li>🚕 Taxis and shuttles are available</li>
+          <li>🚫 Uber is limited</li>
+          <li>☀️ Travel Tip: Bring pesos, pack light breathable clothes, and don’t forget sunscreen!</li>
+        </ul>
+      </div>
 
-      {/* SLIDESHOW */}
       <div
         className="slideshow"
         onMouseEnter={() => setPlaying(false)}
@@ -92,33 +82,29 @@ export default function Services() {
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        <button className="nav prev" aria-label="Previous slide" onClick={() => go(-1)}>‹</button>
+        <button className="nav prev" onClick={() => go(-1)} aria-label="Previous slide">
+          ‹
+        </button>
 
         <div className="track" style={{ transform: `translateX(-${i * 100}%)` }}>
           {slides.map((s, idx) => (
             <div className="slide" key={idx}>
-              <img
-                src={s.src}
-                alt={s.alt}
-                loading="lazy"
-                className="slide-img"
-              />
+              <img src={s.src} alt={s.alt} className="slide-img" loading="lazy" />
               <div className="vignette" />
             </div>
           ))}
         </div>
 
-        <button className="nav next" aria-label="Next slide" onClick={() => go(1)}>›</button>
+        <button className="nav next" onClick={() => go(1)} aria-label="Next slide">
+          ›
+        </button>
 
-        <div className="dots" role="tablist" aria-label="Slide navigation">
+        <div className="dots">
           {slides.map((_, idx) => (
             <button
               key={idx}
               className={`dot ${i === idx ? 'active' : ''}`}
               onClick={() => goTo(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              aria-selected={i === idx}
-              role="tab"
             />
           ))}
         </div>

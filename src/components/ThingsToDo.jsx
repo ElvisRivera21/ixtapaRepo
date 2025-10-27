@@ -5,7 +5,7 @@ function ThingsToDo() {
     const recommendations = [
     
         {
-            name: 'Complete Guide',
+            name: 'Complete Guide.',
             description: 'A complete guide to Ixtapa Zijuatanejo.',
             link: 'https://www.ixtapa.net/',
         },
