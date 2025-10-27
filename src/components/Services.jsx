@@ -115,12 +115,44 @@ export default function Services() {
           to plan your trip and join us for a weekend full of sunshine, laughter, and unforgettable
           memories.
         </p>
+
         <ul>
           <li>✈️ Fly into Ixtapa – Zihuatanejo International Airport (ZIH)</li>
           <li>🚕 Taxis and shuttles are available</li>
           <li>🚫 Uber is limited</li>
           <li>☀️ Travel Tip: Bring pesos, pack light breathable clothes, and don’t forget sunscreen!</li>
         </ul>
+
+        {/* RSVP Reminder */}
+        <div className="rsvp-reminder">
+          <h3>🗓️ RSVP by January 1st, 2026</h3>
+          <p>
+            Please let us know if you’ll be joining us in paradise by submitting your RSVP before the
+            new year. We can’t wait to celebrate with you!
+          </p>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="faq-section">
+          <h3>💬 FAQ</h3>
+          <ul>
+            <li><strong>What’s the dress code?</strong> Beach-themed linen or light, breathable attire is perfect — think relaxed and tropical.</li>
+            <li><strong>Can I bring a plus one?</strong> You’re absolutely welcome to bring a guest!</li>
+            <li><strong>How much should I budget?</strong> Around $50 USD per day is generous for meals and beverages throughout the day.</li>
+            <li><strong>Is transportation easy?</strong> Taxis and shuttles are plentiful; we recommend confirming pickup with your hotel front desk.</li>
+            <li><strong>Any must-haves?</strong> Sunglasses, sunscreen, a hat, and comfortable shoes for exploring the local markets!</li>
+          </ul>
+        </div>
+
+        {/* Gift & Registry Section */}
+        <div className="gift-section">
+          <h3>🎁 Gifts & Honeymoon Fund</h3>
+          <p>
+            Your presence in Mexico is the greatest gift we could ask for! If you’d like to contribute
+            to our honeymoon adventures, we’ve set up a fund to help us make unforgettable memories.
+          </p>
+          <a href="#registry" className="registry-btn">View Our Registry</a>
+        </div>
       </div>
 
       {/* Slideshow */}

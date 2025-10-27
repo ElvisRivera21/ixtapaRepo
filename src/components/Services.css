@@ -213,3 +213,62 @@
         transform: translateY(0);
     }
 }
+
+/* RSVP + FAQ + Gift sections */
+.rsvp-reminder,
+.faq-section,
+.gift-section {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+
+.rsvp-reminder h3,
+.faq-section h3,
+.gift-section h3 {
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.rsvp-reminder p,
+.gift-section p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.faq-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.faq-section li {
+    margin: 0.6rem 0;
+    line-height: 1.6;
+}
+
+.faq-section strong {
+    color: #1e1e1e;
+}
+
+.registry-btn {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background: #f6b817;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.registry-btn:hover {
+    background: #ffcc3f;
+    transform: translateY(-2px);
+}
