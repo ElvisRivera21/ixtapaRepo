@@ -50,7 +50,7 @@ export default function Services() {
   };
 
   /* 🕒 COUNTDOWN TIMER LOGIC */
-  const targetDate = new Date('2026-02-14T00:00:00'); // <-- set your date here
+  const targetDate = new Date('2026-04-04T00:00:00'); // <-- set your date here
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
   useEffect(() => {
