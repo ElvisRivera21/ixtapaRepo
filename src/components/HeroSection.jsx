@@ -2,7 +2,7 @@ import React from 'react';
 import './hero.css';
 
 const HeroSection = () => {
-    const mailtoLink = `mailto:therealelvisrivera@gmail.com?subject=Wedding RSVP&body=Hi Justin and Kiara,%0D%0A%0D%0AWe're excited to RSVP for your wedding! Here are our details:%0D%0A%0D%0AName(s):%0D%0ANumber of guests:%0D%0ADietary restrictions (if any):%0D%0A%0D%0AWith love,%0D%0A[Your Name]`;
+    const mailtoLink = `mailto:justin.kiara2026@gmail.com?subject=Wedding RSVP&body=Hi Justin and Kiara,%0D%0A%0D%0AWe're excited to RSVP for your wedding! Here are our details:%0D%0A%0D%0AName(s):%0D%0ANumber of guests:%0D%0ADietary restrictions (if any):%0D%0A%0D%0AWith love,%0D%0A[Your Name]`;
 
     return (
         <section className="hero">
