@@ -136,7 +136,7 @@ export default function Services() {
         <div className="faq-section">
           <h3>💬 FAQ</h3>
           <ul>
-            <li><strong>What’s the dress code?</strong> Beach-themed linen or light, breathable attire is perfect — think relaxed and tropical.</li>
+            <li><strong>What’s the dress code?</strong> For our beach theme, think tropical and relaxed, linen like clothing.</li>
             <li><strong>Can I bring a plus one?</strong> You’re absolutely welcome to bring a guest!</li>
             <li><strong>How much should I budget?</strong> Around $50 USD per day is generous for meals and beverages throughout the day.</li>
             <li><strong>Is transportation easy?</strong> Taxis and shuttles are plentiful; we recommend confirming pickup with your hotel front desk.</li>
