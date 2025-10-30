@@ -4,9 +4,9 @@ import './Hotels.css';
 function Hotels() {
     const hotels = [
         {
-            name: 'Thompson Zihuatanejo',
-            description: 'A luxurious beachfront resort perfect for romantic getaways.',
-            link: 'https://www.hyatt.com/en-US/hotel/mexico/thompson-zihuatanejo/zihth',
+            name: 'Hotel Catalina Beach Resort',
+            description: 'A charming hotel perched on a hill with breathtaking views of Playa La Ropa.',
+            link: 'https://catalinabeachresort.com/en?occupancy=2&currency=USD',
         },
         {
             name: 'Hotel Aura del Mar',
