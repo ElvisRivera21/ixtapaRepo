@@ -151,7 +151,7 @@ export default function Services() {
             Your presence in Mexico is the greatest gift we could ask for! If you’d like to contribute
             to our honeymoon adventures, we’ve set up a fund to help us make unforgettable memories.
           </p>
-          <a href="#registry" className="registry-btn">View Our Registry</a>
+          <a href="https://venmo.com/Kiaaararivera" className="registry-btn">View Our Venmo</a>
         </div>
       </div>
 
