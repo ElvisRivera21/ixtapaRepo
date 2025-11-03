@@ -13,7 +13,8 @@ export default function Contact() {
   const [status, setStatus] = useState("");
 
   // Uses the backend URL from your .env file
-  const API_BASE = import.meta.env.VITE_RSVP_API || "http://localhost:3001";
+ const API_BASE = import.meta.env.VITE_RSVP_API || "http://localhost:3001";
+console.log("RSVP API Base:", API_BASE);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
