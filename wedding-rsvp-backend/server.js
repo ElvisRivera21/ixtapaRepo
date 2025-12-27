@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 const app = express();
 
@@ -101,4 +103,36 @@ Message: ${message || "(none)"}
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ RSVP backend listening on port ${PORT}`);
+});
+
+
+app.post("/rsvp", async (req, res) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      partySize,
+      attending,
+      notes
+    } = req.body;
+
+    const saved = await prisma.rsvp.create({
+      data: {
+        firstName,
+        lastName,
+        email: email || null,
+        phone: phone || null,
+        partySize: Number(partySize || 1),
+        attending: Boolean(attending),
+        notes: notes || null
+      }
+    });
+
+    return res.status(201).json({ ok: true, saved });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ ok: false, error: "Failed to save RSVP" });
+  }
 });
