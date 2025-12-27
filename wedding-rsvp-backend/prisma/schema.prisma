@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Rsvp {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  firstName String
+  lastName  String
+  email     String?
+  phone     String?
+
+  partySize Int      @default(1)
+  attending Boolean
+  notes     String?  @db.Text
+
+  @@index([lastName])
+  @@index([email])
+}
